@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+	<meta charset="utf-8">
+	<title>Omówienie zadania Szyfr Cezara</title>
+	<meta name="description" content="Projekt edukacyjny, mający wspomagać nauczanie Pythona w szkole podstawowej.">
+	<meta name="keywords" content="Python, zabawa w pythona, nauka Pythona, moduł żółw, moduł turtle">
+	<meta name="author" content="Michał Pilarski">
+	
+	<meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1">
+	
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
+	
+	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+	
+</head>
+
+<body>
+
+    	<header>
+	
+		<h1 class="logo">Zabawa w Pythona</h1>
+		
+		<nav id="topnav">
+		
+			<ul class="menu">
+				<li><a href="index.html">Strona główna</a></li>
+				<li><a href="wstep.html">Wstęp</a></li>
+				<li><a href="lista_zadan.html">Lista zadań</a></li>
+                <li><a href="lista_podpowiedzi.html">Lista podpowiedzi</a></li>
+                <li><a href="wprowadz_kod.html">Wprowadź kod</a></li>
+			</ul>
+			
+		</nav>
+	
+	</header>
+	
+	<div class="container">
+	
+		<div class="west">
+		
+			<main>
+			
+				<article>
+				
+					<header>
+						<h1>Omówienie zadania Szyfr Cezara</h1>
+						<p>Michał Pilarski</p>
+					</header>
+                    <p>Zadanie szyfr Cezara może być trochę skomplikowane, więc te zadanie zrobimy razem. Pierwszym problemem jest napisanie kodu przesunięcia litery o x pozycji.</p>
+                    <p>Komputery zapisują litery i znaki specjalne za pomocą liczb. Przykładowo wielka litera ‘A’ dla komputera jest liczbą 65, a mała litera ‘a’ jest liczbą 97. Komputery zapisują wszystkie znaki jako liczby, ponieważ komputery liczą szybciej używając liczb. Kody wszystkich znaków są zapisane w <a href=
+                        "https://pl.wikipedia.org/wiki/ASCII#Tabela_kod%C3%B3w_ASCII">tablicy ASCII</a>.</p>
+                    <p>Python też obsługuje kody ASCII. Funkcja ord(), służy do określenia kodu ASCII danego znaku.</p>
+                    <script src="https://gist.github.com/Misioskiper/36df8fa69e933bf5bcb451528ca1e38c.js"></script>
+                    <p>W drugą stronę funkcja chr(), służy do określenia znaku na podstawie kodu ASCII.</p>
+                    <script src="https://gist.github.com/Misioskiper/8a8240b13705b8fbe2d5c616df591201.js"></script>
+                    <p>Cel: Napisz funkcję szyfr z parametrami napis i klucz szyfr(napis, klucz)</p>
+                    <p>W pierwszym kroku należy napisać dodatkową funkcję szyfr_litera(litera, klucz) przesuwającą literę o <i>klucz</i> pozycji.</p>
+                    <p>W alfabecie angielskim (bez polskich liter) jest 26 liter. Musimy na to uważać, ponieważ użytkownik może chcieć przesunąć literę o 27 pozycji. Jeśli przesuniemy ‘a’ o 27 pozycji otrzymamy taki znak ‘{‘. Żeby zapobiec takiej sytuacji program, będzie brał resztę z dzielenia zmiennej klucz przez 26.</p>
+                    <p>Nasze obecne zadanie to: zmienić pozycję litery o klucz pozycji. Żeby to zrobić, użyjemy funkcji ord() i chr().</p>
+                    <p>Na początku musimy zmienić kod ‘a’ (97) na 0. Żeby to zrobić od kodu litery odejmujemy 97. Obecnie kod wygląda tak:</p>
+                    <script src="https://gist.github.com/Misioskiper/cdb40b8da076cb0c814f56b2d5a2e451.js"></script>
+                    <p>Następnie musimy dodać <i>klucz</i>, czy przesuwamy literę na oczekiwaną pozycję</p>
+                    <script src="https://gist.github.com/Misioskiper/630bc31dbe65ed23f5b22a017993e25b.js"></script>
+                    <p>Potem musimy wziąć resztę z dzielenia przez 26, aby uniknąć wyjścia poza zakres alfabetu. Kod wygląda tak:</p>
+                    <script src="https://gist.github.com/Misioskiper/c61da27a96a66ebe552fc2d8985d93ca.js"></script>
+                    <p>Następnie do zmiennej <i>pozycja</i> dodajemy 97 i wywołujemy funkcję chr().</p>
+                    <script src="https://gist.github.com/Misioskiper/af28f579ecbd9b506d78f3d63799847f.js"></script>
+                    <p>Cała funkcja wygląda tak:</p>
+                    <script src="https://gist.github.com/Misioskiper/54be17a71cae8e0c67791a4b3188d42a.js"></script>
+                    <p>Teraz przechodzimy do napisania głównej funkcji szyfr(napis, klucz), która szyfruje cały napis.</p>
+                    <p>Na początku wynik ma być pusty. Potem pętlą przechodzimy przez każdą literę zmiennej <i>napis</i>. W pętli do zmiennej <i>wynik</i> dodajemy wynik funkcji szyfr_litera(litera, klucz). Na końcu, po pętli funkcja ma zwrócić zaszyfrowany wyraz.</p>
+                    <p>Główna funkcja ma następującą postać:</p>
+                    <script src="https://gist.github.com/Misioskiper/98e8ac95f175d52e011786163221f06f.js"></script>
+                    <p>Cały kod zadania wygląda następująco:</p>
+                    <script src="https://gist.github.com/Misioskiper/7e1dc05514273e7a641165ef1c74e422.js"></script>
+				</article>
+        </div>
+			</main>
+		
+	</div>
+		
+<div class="east">
+		
+			<aside>
+			
+				<nav>
+				
+					<h2>Podpowiedzi</h2>
+				
+					<ul>
+						<li><a href="rysowanie.html">Rysowanie w Pythonie</a></li>
+						<li><a href="petle.html">Pętle</a></li>
+						<li><a href="napisy_i_petle.html">Napisy i pętle</a></li>
+						<li><a href="instrukcje_warunkowe.html">Instrukcje warunkowe</a></li>
+						<li><a href="operacje_matematyczne.html">Operacje matematyczne</a></li>
+						<li><a href="funkcje.html">Funkcje</a></li>
+						<li><a href="listy.html">Listy</a></li>
+						<li><a href="omowienie_szyfr_cezara.html">Omówienie zadania Szyfr Cezara</a></li>
+					</ul>
+					
+					<h2>Zadania</h2>
+				
+					<ul>
+						<li><a href="domek.html">Zadanie 1: Domek</a></li>
+						<li><a href="kolo.html">Zadanie 2: Koło</a></li>
+						<li><a href="szlaczek.html">Zadanie 3: Szlaczek</a></li>
+						<li><a href="kafelek.html">Zadanie 4: Kafelek</a></li>
+						<li><a href="kredka.html">Zadanie 5: Kredka</a></li>
+						<li><a href="serca.html">Zadanie 6: Serca</a></li>
+						<li><a href="park_rozrywki.html">Zadanie 7: Park Rozrywki</a></li>
+						<li><a href="sztuczka.html">Zadanie 8: Sztuczka</a></li>
+						<li><a href="liczby_parzyste.html">Zadanie 9: Liczby parzyste</a></li>
+						<li><a href="szyfr_cezara.html">Zadanie 10: Szyfr Cezara</a></li>
+					</ul>
+				</nav>
+			
+			</aside>
+		
+		</div>
+		
+		<div style="clear: both;"></div>
+	
+	</div>
+	
+	<footer>
+		
+		
+		<div class="info">
+		
+            <a href="http://sp3zabki.pl/">Szkoła Podstawowa nr.3 im. Małego Powstańca w Ząbkach</a><br/>
+            Autor: Michał Pilarski 2020
+    
+        </div>
+	</footer>
+	
+</body>
+</html>
